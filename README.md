@@ -67,5 +67,5 @@ S3:
 4:off
 
 
-<img src="decoder.jpg" alt="decoder" width="200">
-<img src="shield.jpg" alt="shield" width="200">
+<img src="decoder.jpg" alt="decoder" width="690">
+

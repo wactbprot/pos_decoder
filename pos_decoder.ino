@@ -2,9 +2,10 @@
 #define PORT 9009
 #define MAXTCPLENGTH 30
  
-byte mac[] = {0x00, 0x50, 0x56, 0x1E, 0x38, 0x36};
-
-IPAddress ip(192, 168, 98, 135);
+byte mac[] = {0x02, 0x78, 0x20, 0xa8, 0x7a, 0x14};
+IPAddress ip(192, 168, 122, 20);
+//byte mac[] = {0x00, 0x50, 0x56, 0x1E, 0x38, 0x36};
+//IPAddress ip(192, 168, 98, 135);
 EthernetServer server(PORT);
 
 String cmd;
