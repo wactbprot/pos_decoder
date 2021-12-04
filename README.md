@@ -1,3 +1,18 @@
+```
+
+ ____  ____  ____  _  _____  _  ____  _        ____  _____ ____  ____  ____  _____ ____ 
+/  __\/  _ \/ ___\/ \/__ __\/ \/  _ \/ \  /|  /  _ \/  __//   _\/  _ \/  _ \/  __//  __\
+|  \/|| / \||    \| |  / \  | || / \|| |\ ||  | | \||  \  |  /  | / \|| | \||  \  |  \/|
+|  __/| \_/|\___ || |  | |  | || \_/|| | \||  | |_/||  /_ |  \_ | \_/|| |_/||  /_ |    /
+\_/   \____/\____/\_/  \_/  \_/\____/\_/  \|  \____/\____\\____/\____/\____/\____\\_/\_\
+                                                                                        
+```
+
+Counts the steps (+/-) provided by the inlet/outlet valves [M1-M6](https://gitlab1.ptb.de/vaclab/valve_schemes/-/blob/master/SE3.png) rail guides. Positions are accessible via TCP.
+
+**Next up**: publish position via [mqtt lib](https://github.com/adafruit/Adafruit_MQTT_Library/blob/master/examples/mqtt_ethernet/mqtt_ethernet.ino)
+
+
 
 ```
 
