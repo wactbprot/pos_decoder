@@ -7,19 +7,18 @@
 #define MQTT_SERVER      "172.21.101.21"
 #define MQTT_SERVERPORT  1883
 #define MQTT_USERNAME    "***"
-#define MQTT_PWD         "***"
+#define MQTT_PWD         "+++"
 #define MQTT_TOPIC       "vacuum/se3/valve/6/position"
 #define MAX_CMD_LENGTH   30 // maximum command length
-#define CONV             100 // conversion count nm
 #define DISCONN_DELAY    5000 // wait after disconnect
 #define READ_DELAY       1000 // wait after read from Ethernet
-#define PUB_COUNT        10 // publish all PUB_COUNT values
 
 String cmd;
 const byte S1 = 2;
 const byte D1 = 3;
 volatile long pos = 0;
-volatile int pub_count = 0;
+volatile long spos = 0; // smoothed position
+volatile bool pub = false;
 
 byte mac[] = {0x02, 0x78, 0x20, 0xa8, 0x7a, 0x18};
 IPAddress ip(192, 168, 122, 24);
@@ -61,7 +60,7 @@ void net_read(){
           cmd = "";
           break;
         }
-	cmd += c;
+	      cmd += c;
       }
       i++;
     }
@@ -77,6 +76,7 @@ String net_exec(String cmd) {
   if( cmd == "zero_pos") {
     pos = 0;
     res = "ok\n";
+    pub = true;
   }
   if( cmd == "mqtt_conn") {
   if (mqtt.connected()) {
@@ -88,26 +88,33 @@ String net_exec(String cmd) {
 }
 
 void isr() {
-  pub_count++;
-  
+ 
   if  (digitalRead(D1) == LOW) {
     pos++;
   } else {
     pos--;
   }
-
-  if (pub_count == PUB_COUNT) {
-    pub_count = 0;
-    mqtt_connect();
-    pub_pos.publish(pos*CONV);
-     
-    if(! mqtt.ping()) {
-      mqtt.disconnect();
-    }
+  if (pos > (spos + 10)) {
+    spos  = pos;
+    pub = true;
+  }
+  if (pos < (spos - 10)) {
+    spos  = pos;
+    pub = true;
   }
 }
 
 void loop() {
   net_read();
+
+  if (pub) {
+    pub = false;
+    mqtt_connect();
+    pub_pos.publish(pos);
+     
+    if(! mqtt.ping()) {
+      mqtt.disconnect();
+    }
+  }
   delay(READ_DELAY);
 }
