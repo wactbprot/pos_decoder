@@ -18,7 +18,7 @@ const byte S1 = 2;
 const byte D1 = 3;
 volatile long pos = 0;
 volatile long spos = 0; // smoothed position
-volatile bool pub = false;
+volatile bool pub = true; // publish on boot
 
 byte mac[] = {0x02, 0x78, 0x20, 0xa8, 0x7a, 0x18};
 IPAddress ip(192, 168, 122, 24);
@@ -27,6 +27,8 @@ EthernetServer server(PORT);
 EthernetClient mqtt_client;
 Adafruit_MQTT_Client mqtt(&mqtt_client, MQTT_SERVER, MQTT_SERVERPORT, MQTT_USERNAME, MQTT_PWD);
 Adafruit_MQTT_Publish pub_pos = Adafruit_MQTT_Publish(&mqtt, MQTT_TOPIC);
+
+void mqtt_connect();
 
 void setup() {
   Ethernet.begin(mac, ip);
@@ -79,11 +81,12 @@ String net_exec(String cmd) {
     pub = true;
   }
   if( cmd == "mqtt_conn") {
-  if (mqtt.connected()) {
+    if (mqtt.connected()) {
       res = "ok\n";
-      } else {
+    } else {
       res = mqtt.connectErrorString(mqtt_err);
-  }}
+    }
+  }
   return res;
 }
 
