@@ -83,3 +83,28 @@ S3:
 
 <img src="decoder.jpg" alt="decoder" width="690">
 
+## MAC/IP
+
+Das Gerät hat den Namen: e75410m
+die MAC-Adresse: 027820a87a13
+und die IP-adresse: 192.168.122.19
+
+Das Gerät hat den Namen: e75411m
+die MAC-Adresse: 027820a87a14
+und die IP-adresse: 192.168.122.20
+
+Das Gerät hat den Namen: e75412m
+die MAC-Adresse: 027820a87a15
+und die IP-adresse: 192.168.122.21
+
+Das Gerät hat den Namen: e75413m
+die MAC-Adresse: 027820a87a16
+und die IP-adresse: 192.168.122.22
+
+Das Gerät hat den Namen: e75414m
+die MAC-Adresse: 027820a87a17
+und die IP-adresse: 192.168.122.23
+
+Das Gerät hat den Namen: e75415m
+die MAC-Adresse: 027820a87a18
+und die IP-adresse: 192.168.122.24
