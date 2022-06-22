@@ -85,26 +85,12 @@ S3:
 
 ## MAC/IP
 
-Das Gerät hat den Namen: e75410m
-die MAC-Adresse: 027820a87a13
-und die IP-adresse: 192.168.122.19
+|       Name          |     MAC-Adresse          |     IP-Ardesse             | 
+|---------------------|--------------------------|----------------------------|
+|        e75410m      |      027820a87a13        |       192.168.122.19       |
+|        e75411m      |      027820a87a14        |       192.168.122.20       |
+|        e75412m      |      027820a87a15        |       192.168.122.21       |
+|        e75413m      |      027820a87a16        |       192.168.122.22       |
+|        e75414m      |      027820a87a17        |       192.168.122.23       |
+|        e75415m      |      027820a87a18        |       192.168.122.24       |
 
-Das Gerät hat den Namen: e75411m
-die MAC-Adresse: 027820a87a14
-und die IP-adresse: 192.168.122.20
-
-Das Gerät hat den Namen: e75412m
-die MAC-Adresse: 027820a87a15
-und die IP-adresse: 192.168.122.21
-
-Das Gerät hat den Namen: e75413m
-die MAC-Adresse: 027820a87a16
-und die IP-adresse: 192.168.122.22
-
-Das Gerät hat den Namen: e75414m
-die MAC-Adresse: 027820a87a17
-und die IP-adresse: 192.168.122.23
-
-Das Gerät hat den Namen: e75415m
-die MAC-Adresse: 027820a87a18
-und die IP-adresse: 192.168.122.24
