@@ -6,9 +6,9 @@
 #define PORT             9009
 #define MQTT_SERVER      "172.21.101.21"
 #define MQTT_SERVERPORT  1883
-#define MQTT_USERNAME    "***"
-#define MQTT_PWD         "+++"
-#define MQTT_TOPIC       "vacuum/se3/valve/6/position"
+#define MQTT_USERNAME    ""
+#define MQTT_PWD         ""
+#define MQTT_TOPIC       "vacuum/se3/valve/1/position"
 #define MAX_CMD_LENGTH   30 // maximum command length
 #define DISCONN_DELAY    5000 // wait after disconnect
 #define READ_DELAY       1000 // wait after read from Ethernet
@@ -20,8 +20,8 @@ volatile long pos = 0;
 volatile long spos = 0; // smoothed position
 volatile bool pub = true; // publish on boot
 
-byte mac[] = {0x02, 0x78, 0x20, 0xa8, 0x7a, 0x18};
-IPAddress ip(192, 168, 122, 24);
+byte mac[] = {0x02, 0x78, 0x20, 0xa8, 0x7a, 0x13};
+IPAddress ip(192, 168, 122, 19);
 EthernetServer server(PORT);
 
 EthernetClient mqtt_client;
@@ -109,15 +109,17 @@ void isr() {
 
 void loop() {
   net_read();
-
+  
+  if(! mqtt.ping()) {
+      mqtt.disconnect();
+    }
+    
   if (pub) {
     pub = false;
     mqtt_connect();
     pub_pos.publish(pos);
      
-    if(! mqtt.ping()) {
-      mqtt.disconnect();
-    }
+    
   }
   delay(READ_DELAY);
 }
